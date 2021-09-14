@@ -3,7 +3,7 @@ The beginning of group 3's project 1 (idea to be determined)
 
 ## Important URLs
 
-* [Deployed Application URL](#) 
+* [Deployed Application URL](https://candracodes.github.io/project-1/) 
 * [GitHub Repo URL](#)
 
 ## Foreword
