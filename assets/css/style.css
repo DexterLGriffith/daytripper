@@ -1,1 +1,6 @@
-/* This is placeholder code */
+/* This is placeholder code */.icon-block {
+  padding: 0 15px;
+}
+.icon-block .material-icons {
+	font-size: inherit;
+}
