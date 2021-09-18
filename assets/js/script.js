@@ -86,3 +86,8 @@ $("#search-btn").on("click", function () {
   initMap();
   initWeather();
 });
+
+// THIS FUNCTION FIRES UP THE MODAL:
+$(document).ready(function(){
+  $('.modal').modal();
+});
