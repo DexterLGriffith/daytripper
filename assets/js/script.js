@@ -72,13 +72,14 @@ function initWeather() {
   fetch('http://api.openweathermap.org/data/2.5/weather?q=' + inputValue.value + '&units=imperial&524901&appid=95d25656c865f0b0125b6ad3ef11eab0')
     .then(Response => Response.json())
     .then(data => {
+      console.log("http://api.openweathermap.org/data/2.5/weather?q=" +inputValue.value + "&units=imperial&524901&appid=95d25656c865f0b0125b6ad3ef11eab0");
       var cityName = data['name'];
       var tempValue = data['main']['temp']
       var descriptionValue = data['weather'][0]['description'];
 
-      cityNameEl.innerHTML = cityName
-      temperatureEl.innerHTML = tempValue;
-      descriptionEl.innerHTML = descriptionValue;
+      cityNameEl.innerHTML = "City: " + cityName;
+      temperatureEl.innerHTML = "Temperature: " + tempValue +" °F";
+      descriptionEl.innerHTML = "Description: " + descriptionValue;
 
     })
     // 3. Make a promise (then)
