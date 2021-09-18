@@ -127,7 +127,7 @@ body {
 10. MAP IMAGE
 -------------------------- */ 
 #Map {
-  
+  height: 250px;
 }
 #map-image {
   width: 100%;
@@ -136,6 +136,9 @@ body {
 /* --------------------------
 11. RESULTS
 -------------------------- */ 
+#details {
+  padding-left: 0 !important;
+}
 #city-name {
   font-weight: 800;
 }
