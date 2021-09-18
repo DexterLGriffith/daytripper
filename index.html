@@ -1,89 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
-  <title>Project 1</title>
 
-  <!-- CSS  -->
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+  <title> Day Tripper | Project 1 | Group 3</title>
+
+  
+  <!-- MATERIALIZE CSS -->
+  <link href="./assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
+  <!-- GOOGLE MATERIALIZE ICONS  -->
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-  <link href="./assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
-  <link href="./assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <!-- GOOGLE FONTS-->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+  <!-- FONT AWESOME -->
+  <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
+  <!-- CUSTOM CSS -->
+  <link href="./assets/css/style.css" type="text/css" rel="stylesheet" media="screen,projection" />
 </head>
+
 <body>
-  <nav class="light-blue lighten-1" role="navigation">
-    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo">Logo</a>
+  <!-- START: NAVBAR -->
+  <nav class="new-nav-color lighten-1" role="navigation">
+    <div class="nav-wrapper container"><a id="logo-container" href="#" class="brand-logo"><img id="daytripper-logo"
+          src="./assets/images/logo-text.svg"></a>
       <ul class="right hide-on-med-and-down">
         <li>
-            <a href="#sample1">Sample1</a>
+          <a href="#features-container">About</a>
         </li>
         <li>
-            <a href="#sample2">Sample2</a>
-        </li>
-        <li>
-            <a href="#sample3">sample3</a>
+          <a href="#plan-your-day">Plan Your Day</a>
         </li>
       </ul>
 
       <ul id="nav-mobile" class="sidenav">
-            <li>
-                <a href="#sample1">Sample1</a>
-            </li>
-            <li>
-                <a href="#sample2">Sample2</a>
-            </li>
-            <li>
-                <a href="#sample3">sample3</a>
-            </li>
+        <li>
+          <a href="#sample1">About</a>
+        </li>
+        <li>
+          <a href="#sample2">Plan Your Day</a>
+        </li>
       </ul>
       <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
     </div>
   </nav>
+  <!-- END: NAVBAR -->
+
+  <!-- START: WAVES CONTAINER -->
+  <div id="waves-container">
+    <!-- START: WAVES-->
+    <div class="custom-shape-divider-top-1631660211">
+      <svg data-name="Layer 1" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 120" preserveAspectRatio="none">
+          <path d="M0,0V46.29c47.79,22.2,103.59,32.17,158,28,70.36-5.37,136.33-33.31,206.8-37.5C438.64,32.43,512.34,53.67,583,72.05c69.27,18,138.3,24.88,209.4,13.08,36.15-6,69.85-17.84,104.45-29.34C989.49,25,1113-14.29,1200,52.47V0Z" opacity=".25" class="shape-fill"></path>
+          <path d="M0,0V15.81C13,36.92,27.64,56.86,47.69,72.05,99.41,111.27,165,111,224.58,91.58c31.15-10.15,60.09-26.07,89.67-39.8,40.92-19,84.73-46,130.83-49.67,36.26-2.85,70.9,9.42,98.6,31.56,31.77,25.39,62.32,62,103.63,73,40.44,10.79,81.35-6.69,119.13-24.28s75.16-39,116.92-43.05c59.73-5.85,113.28,22.88,168.9,38.84,30.2,8.66,59,6.17,87.09-7.5,22.43-10.89,48-26.93,60.65-49.24V0Z" opacity=".5" class="shape-fill"></path>
+          <path d="M0,0V5.63C149.93,59,314.09,71.32,475.83,42.57c43-7.64,84.23-20.12,127.61-26.46,59-8.63,112.48,12.24,165.56,35.4C827.93,77.22,886,95.24,951.2,90c86.53-7,172.46-45.71,248.8-84.81V0Z" class="shape-fill"></path>
+      </svg>
+  </div>
+  <!-- END: WAVES -->
+  </div>
+  <!-- END: WAVES CONTAINER -->
+
+  <!-- START: JUMBOTRON -->
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
-      <h1 class="header center orange-text">Project 1</h1>
-      <div class="row center">
-        <h5 class="header col s12 light">A modern responsive front-end framework based on Material Design</h5>
+      <!-- <h1 class="header blue-h1">Plan your day… today.</h1> -->
+      <div class="row">
+        <div class="col m6 s12">
+          <img id="main-photo" src="assets/images/RoadTrip.svg" />
+        </div>
+        <div class="col m6 s12">
+          <h1 class="header blue-h1">Plan your day… today.</h1>
+        <h5 class="header col s12 light">
+          <strong>DAYTRIPPER</strong> is a simple to use app that let’s you plan your day. Wanna take a road trip? Curious about the weather at your destination? Let DayTripper advise you on what to wear and places to visit,</h5>
+        <a href="#plan-your-day" id="download-button"
+          class="btn-large waves-effect waves-light main-btn">Plan Your Day</a>
+        </div>
+        
       </div>
-      <div class="row center">
-        <a href="http://materializecss.com/getting-started.html" id="download-button" class="btn-large waves-effect waves-light orange">Get Started</a>
+      <div class="row">
+        <!-- <a href="http://materializecss.com/getting-started.html" id="download-button"
+          class="btn-large waves-effect waves-light orange">Get Started</a> -->
       </div>
       <br><br>
 
     </div>
   </div>
+  <!-- END: JUMBOTRON -->
 
-
-  <div class="container">
+  <!-- START: FEATURES -->
+  <div id="features-container">
     <div class="section">
 
       <!--   Icon Section   -->
       <div class="row">
         <div class="col s12 m4">
           <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">flash_on</i></h2>
-            <h5 class="center">THIS PROJECT</h5>
+            <h2 class="center light-blue-text"><i class=" material-icons blue-icon fas fa-cloud-sun-rain fa-6x"></i></h2>
+            <h5 class="center">Forecast</h5>
 
-            <p class="light">We did most of the heavy lifting for you to provide a default stylings that incorporate our custom components. Additionally, we refined animations and transitions to provide a smoother experience for developers.</p>
+            <p class="light">Lorem ipsum dummy text dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
           </div>
         </div>
 
         <div class="col s12 m4">
           <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">group</i></h2>
-            <h5 class="center">MAKES MY</h5>
+            <h2 class="center light-blue-text"><i class=" material-icons blue-icon fas fa-map-marker-alt fa-6x"></i></h2>
+            <h5 class="center">Places</h5>
 
-            <p class="light">By utilizing elements and principles of Material Design, we were able to create a framework that incorporates components and animations that provide more feedback to users. Additionally, a single underlying responsive system across all platforms allow for a more unified user experience.</p>
+            <p class="light">Lorem ipsum dummy text dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
           </div>
         </div>
 
         <div class="col s12 m4">
           <div class="icon-block">
-            <h2 class="center light-blue-text"><i class="material-icons">settings</i></h2>
-            <h5 class="center">BRAIN HURT</h5>
+            <h2 class="center light-blue-text"><i class=" material-icons blue-icon fas fa-suitcase-rolling fa-6x"></i></h2>
+            <h5 class="center">Packing</h5>
 
-            <p class="light">We have provided detailed documentation as well as specific code examples to help new users get started. We are also always open to feedback and can answer any questions a user may have about Materialize.</p>
+            <p class="light">Lorem ipsum dummy text dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
           </div>
         </div>
       </div>
@@ -92,41 +128,79 @@
     <br><br>
   </div>
 
-  <footer class="page-footer orange">
+  <!-- END: FEATURES-->
+
+  <!-- START: PLAN YOUR DAY-->
+  <div id="plan-your-day" class="container">
+    <!-- START: SECTION -->
+    <div class="section">
+
+      <!-- SEARCH ZIPCODE -->
+      <div class="row">
+        <div id="search-container" class="col s12 m12">
+          <div class="icon-block">
+            <div class="input-field">
+              <h3 class="header blue-h1">Plan your day.</h3>
+              <p>Enter the zipcode of your destination to get started</p>
+              <input placeholder="Search Zipcode" id="search-zipcode" type="text" class="validate">
+              <label for="zipcode"></label>
+              
+              <a class="search-btn waves-effect waves-light btn">button</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- RESULTS -->
+      <div class="row">
+        <!-- RIGHT SIDE-->
+        <div class="col s12 m12">
+          <div class="icon-block">
+            <h5>RESULTS</h5>
+            <p class="light">This section may show the results</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <!-- END: SECTION-->
+  </div>
+  <!-- END: PLAN YOUR DAY -->
+
+  <!-- START: FOOTER -->
+  <footer class="page-footer blue-footer">
     <div class="container">
       <div class="row">
+        <!-- ABOUT THIS PROJECT -->
         <div class="col l6 s12">
-          <h5 class="white-text">Company Bio</h5>
-          <p class="grey-text text-lighten-4">We are a team of college students working on this project like it's our full time job. Any amount would help support and continue development on this project and is greatly appreciated.</p>
-
-
+          <h5 class="white-text">About This Project</h5>
+          <p class="grey-text text-lighten-4">Lorem ipsum “dummy text” dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
         </div>
+
+        <!-- APP DEVELOPER -->
         <div class="col l3 s12">
-          <h5 class="white-text">Settings</h5>
+          <h5 class="white-text">App Developers</h5>
           <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
+            <li><a class="white-text"  href="https://github.com/candracodes" target="_blank">Candra Fried — Github</a></li>
+            <li><a class="white-text" href="https://github.com/allencheslik0" target="_blank">Allen Cheslik — Github</a></li>
+            <li><a class="white-text" href="https://github.com/DexterLGriffith" target="_blank">Dexter Griffith — Github</a></li>
+            <li><a class="white-text" href="https://github.com/ashlynsmith" target="_blank">Ashlyn Smith — Github</a></li>
           </ul>
         </div>
+
+        <!-- VIEW PROJECT DOCUMENTATION -->
         <div class="col l3 s12">
-          <h5 class="white-text">Connect</h5>
-          <ul>
-            <li><a class="white-text" href="#!">Link 1</a></li>
-            <li><a class="white-text" href="#!">Link 2</a></li>
-            <li><a class="white-text" href="#!">Link 3</a></li>
-            <li><a class="white-text" href="#!">Link 4</a></li>
-          </ul>
+          <h5 class="white-text"><a id="project-documenetation" href="https://github.com/candracodes/daytripper" target="_blank">Project Documentation</a></h5>
         </div>
       </div>
     </div>
     <div class="footer-copyright">
       <div class="container">
-      Made by <a class="orange-text text-lighten-3" href="http://materializecss.com">Materialize</a>
+        © Copyright 2021 — Group 3 |  Project 1
       </div>
     </div>
   </footer>
+  <!-- END: FOOTER -->
 
 
   <!--  Scripts-->
@@ -134,5 +208,6 @@
   <script src="js/materialize.js"></script>
   <script src="js/script.js"></script>
 
-  </body>
+</body>
+
 </html>

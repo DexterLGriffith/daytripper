@@ -1,6 +1,126 @@
-/* This is placeholder code */.icon-block {
+/*
+TABLE OF CONTENTS: 
+----------------------------------------------
+1. GLOBAL SEMANTIC ELEMENTS
+2. NAVBAR
+3. NAVBAR | WAVES
+4. LOGO
+5. JUMBOTRON
+6. FEATURES
+7. ICONS
+8. SEARCH
+9. FOOTER
+10. OTHER
+-- 
+*/
+
+/* --------------------------
+1. GLOBAL SEMANTIC ELEMENTS
+-------------------------- */ 
+body {
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* --------------------------
+2. NAVBAR
+-------------------------- */ 
+.new-nav-color {
+  background-color: #4d6dfa;
+}
+
+/* --------------------------
+3. NAVBAR | WAVES
+-------------------------- */ 
+#waves-container {
+  position:relative;
+}
+.custom-shape-divider-top-1631660211 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  overflow: hidden;
+  line-height: 0;
+}
+
+.custom-shape-divider-top-1631660211 svg {
+  position: relative;
+  display: block;
+  width: calc(227% + 1.3px);
+  height: 68px;
+}
+
+.custom-shape-divider-top-1631660211 .shape-fill {
+  fill: #4D6DFA;
+}
+
+/* --------------------------
+4. LOGO
+-------------------------- */ 
+#daytripper-logo {
+  height:100%;
+  width: 100%;
+}
+
+/* --------------------------
+5. JUMBOTRON
+-------------------------- */ 
+.blue-h1 {
+  color: #4d6dfa;
+  font-weight: 700;
+}
+
+#main-photo {
+  margin-top: 50px;
+}
+.main-btn {
+  background-color: #394d8b;
+}
+
+/* --------------------------
+6. FEATURES
+-------------------------- */ 
+#features-container {
+  background-color: #f2f3ff;
+  width:100% !important;
+}
+/* --------------------------
+7. ICONS
+-------------------------- */ 
+.icon-block {
   padding: 0 15px;
 }
 .icon-block .material-icons {
 	font-size: inherit;
 }
+.blue-icon {
+  color: #4d6dfa;
+}
+/* --------------------------
+8. SEARCH
+-------------------------- */ 
+#search-container{
+  border-bottom: 1px #dedede solid;
+  padding-bottom: 50px;
+}
+.search-btn {
+  background-color: #394d8b;
+}
+
+/* --------------------------
+9. FOOTER
+-------------------------- */ 
+.blue-footer {
+  background-color: #394d8b;
+}
+#project-documenetation {
+  color: #ffffff !important;
+}
+
+#project-documenetation a {
+  color: #ffffff !important;
+}
+
+/* --------------------------
+10. OTHER
+-------------------------- */ 
