@@ -179,11 +179,17 @@
   <!-- Modal Structure -->
   <div id="modal1" class="modal">
     <div class="modal-content">
-      <h4>Modal Header</h4>
-      <p>A bunch of text</p>
+      <h4>DayTripper Recommendations</h4>
+      <p>For your trip, we recommend the following:</p>
+      <ul id="modal-recommendations">
+        <li>ONE</li>
+        <li>TWO</li>
+        <li>THREE</li>
+      </ul>
+      <p id="v2-0-note">Future Development Note: v.2.0 to include: Actual places to visit based on proximity</p>
     </div>
     <div class="modal-footer">
-      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+      <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
     </div>
   </div>
 
@@ -229,6 +235,8 @@
   <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
   <script src="./assets/js/materialize.js"></script>
   <script src="./assets/js/script.js"></script>
+  <!-- This script is what makes the google maps API work -->
+  <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmtQ1hzQJFdnivcj0RLybUddmhldyarz8&callback=initMap&libraries=places"></script>
 
 </body>
 

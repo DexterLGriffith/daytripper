@@ -143,6 +143,10 @@ body {
   color:#4d6dfa;
 }
 
+#v2-0-note {
+  color: #cccccc;
+  font-style: italic;
+}
 /* --------------------------
 12. OTHER
 -------------------------- */ 
