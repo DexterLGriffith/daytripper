@@ -43,6 +43,14 @@ function initMap() {
   console.log("Google Maps has been initialized");
   var googleMapkey = "AIzaSyDmtQ1hzQJFdnivcj0RLybUddmhldyarz8";
   var mapqueryURL = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDmtQ1hzQJFdnivcj0RLybUddmhldyarz8&callback=initMap"
+
+  map = new google.maps.Map(document.getElementById('Map'), {
+    center: {
+      lat: 32.7798,
+      lng: -96.7623
+    },
+    zoom: 10,
+  });
   // 1. Define an API Query URL
   // 2. Do a fetch call to retrieve the data
   // 3. Make a promise (then)
@@ -51,9 +59,9 @@ function initMap() {
 
 // TODO: Create the function that grabs the openweathermap
 var inputValue = document.querySelector('.city-search');
-var cityNameEl = document.querySelector('.city-name');
-var descriptionEl = document.querySelector('.description');
-var temperatureEl = document.querySelector('.temperature');
+var cityNameEl = document.querySelector('#city-name');
+var descriptionEl = document.querySelector('#description');
+var temperatureEl = document.querySelector('#temperature');
 
 
 function initWeather() {
@@ -88,6 +96,6 @@ $("#search-btn").on("click", function () {
 });
 
 // THIS FUNCTION FIRES UP THE MODAL:
-$(document).ready(function(){
+$(document).ready(function () {
   $('.modal').modal();
 });
