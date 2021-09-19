@@ -12,7 +12,9 @@ TABLE OF CONTENTS:
 9. FOOTER
 10. MAP IMAGE
 11. RESULTS
-12. OTHER
+12. PLAN YOUR DAY SECTION
+13. ERROR
+14. OTHER
 -- 
 */
 
@@ -108,6 +110,10 @@ body {
 .search-btn {
   background-color: #394d8b;
 }
+.clear-btn {
+  background-color: #c62828;
+  display:inline-block;
+}
 
 /* --------------------------
 9. FOOTER
@@ -139,17 +145,49 @@ body {
 #details {
   padding-left: 0 !important;
 }
+#details li {
+  float:left;
+  padding-left: 10px;
+  font-size: large;
+}
 #city-name {
   font-weight: 800;
 }
 #recommendation {
   color:#4d6dfa;
 }
-
+#temperature {
+  font-weight: 800;
+  font-size: xxx-large;
+  float: left;
+}
+#temp-icon {
+  float:left;
+}
+#temp-icon img {
+  width: 70px;
+  height: 70px;
+}
 #v2-0-note {
-  color: #cccccc;
+  color: #4d6dfa;
   font-style: italic;
 }
+
 /* --------------------------
-12. OTHER
+12. PLAN YOUR DAY SECTION
+-------------------------- */ 
+#plan-your-day {
+  /* TODO: Would be nice to add a transition to ease down page */
+}
+
+/* --------------------------
+13. ERROR
+-------------------------- */ 
+#error-header {
+  color: #c62828;
+  font-weight: bold;
+}
+
+/* --------------------------
+14. OTHER
 -------------------------- */ 
