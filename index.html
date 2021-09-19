@@ -37,10 +37,10 @@
 
       <ul id="nav-mobile" class="sidenav">
         <li>
-          <a href="#sample1">About</a>
+          <a href="#features-container">About</a>
         </li>
         <li>
-          <a href="#sample2">Plan Your Day</a>
+          <a href="#plan-your-day">Plan Your Day</a>
         </li>
       </ul>
       <a href="#" data-target="nav-mobile" class="sidenav-trigger"><i class="material-icons">menu</i></a>
@@ -66,7 +66,6 @@
   <div class="section no-pad-bot" id="index-banner">
     <div class="container">
       <br><br>
-      <!-- <h1 class="header blue-h1">Plan your day… today.</h1> -->
       <div class="row">
         <div class="col m6 s12">
           <img id="main-photo" src="assets/images/RoadTrip.svg" />
@@ -74,18 +73,12 @@
         <div class="col m6 s12">
           <h1 class="header blue-h1">Plan your day… today.</h1>
         <h5 class="header col s12 light">
-          <strong>DAYTRIPPER</strong> is a simple to use app that let’s you plan your day. Wanna take a road trip? Curious about the weather at your destination? Let DayTripper advise you on what to wear and places to visit,</h5>
+          <strong>DAYTRIPPER</strong> is a simple to use app that let’s you plan your day. Wanna take a road trip? Curious about the weather at your destination? Let DayTripper advise you on what to wear and places to visit.</h5>
         <a href="#plan-your-day" id="download-button"
           class="btn-large waves-effect waves-light main-btn">Plan Your Day</a>
         </div>
-        
-      </div>
-      <div class="row">
-        <!-- <a href="http://materializecss.com/getting-started.html" id="download-button"
-          class="btn-large waves-effect waves-light orange">Get Started</a> -->
       </div>
       <br><br>
-
     </div>
   </div>
   <!-- END: JUMBOTRON -->
@@ -127,7 +120,6 @@
     </div>
     <br><br>
   </div>
-
   <!-- END: FEATURES-->
 
   <!-- START: PLAN YOUR DAY-->
@@ -146,64 +138,81 @@
               <label for="city-search"></label>
               
               <a id="search-btn" class="search-btn waves-effect waves-light btn">Search</a>
+              <a id="clear-btn" class="clear-btn waves-effect waves-light btn">Clear</a>
             </div>
           </div>
         </div>
       </div>
 
+      <!-- ERROR SECTION -->
+      <div id="error-section" class="row">
+        <div class="col s12 l12">
+          <h4 id="error-header">Error</h4>
+          <p id="error-message">Sorry, there was an error. <br>Make sure the city is spelled correctly, and that the field search isn't empty.</p>
+        </div>
+      </div>
+
       <!-- RESULTS ROW -->
-      <div class="row">
-        <div class="col s2">
-          <!-- THIS IS WHERE THE ICON WILL GO -->
-          ICON
+      <div id="results-row" class="row">
+        <div class="col s12 m3">
+          <!-- TEMP AND ICON -->
+          <span id="temperature"></span>
+          <span id="temp-icon"></span>
         </div>
         <!-- DETAILS -->
-        <div id="details" class="col s10">
+        <div id="details" class="col s12 m9">
           <ul>
-            <li id="city-name">City Name:</li>
-            <li id="temperature">Temperature: </li>
-            <li id="description">Description: </li>
-            <!-- THIS TRIGGERS OUR MODAL 1 -->
-            <li id="recommendation"><a data-target="modal1" class="modal-trigger" href="#">View DayTripper Recommendation <i class="fas fa-arrow-circle-right"></i></a></li>
-          </ul>   
+            <li id="city-name"></li>
+            <li id="description"></li>
+            <li id="wind-speed"></li>
+            <li id="humidity"></li>
+          </ul>
         </div>
         
       </div>
       <!-- END: RESULTS ROW-->
 
+      <!-- START: RECOMMENDATION LINK -->
+      <div class="row">
+        <div id="recommendation-container" class="col sm12 l12">
+          <!-- THIS MODAL TRIGGER IS CONSTRUCTED DYNAMICALLY IN SCRIPT.JS -->
+        </div>
+      </div>
+      <!-- END: RECOMMENDATION LINK -->
+      
       <!-- THIS IS THE MAP-->
       <div class="row">
         <div id="Map" class="col s12 l12">
-
+          <!-- THIS MAP IS DYNAMICALLY CREATED IN SCRIPT.JS -->
         </div>
-      </div>
-
-      
+        <p id="v2-0-note">Development Note: Version 2.0 will allow the map to move and zoom to the city the user enters.</p>
+      </div>  
 
     </div>
     <!-- END: SECTION-->
   </div>
   <!-- END: PLAN YOUR DAY -->
 
-  <!-- START: MODAL 1 -->
-  <!-- Modal Structure -->
+  <!-- START: MODAL 1: DAYTRIPPER RECOMMENDATIONS -->
   <div id="modal1" class="modal">
     <div class="modal-content">
       <h4>DayTripper Recommendations</h4>
-      <p>For your trip, we recommend the following:</p>
+      <p>Based on your search, we recommend the following for your trip:</p>
       <ul id="modal-recommendations">
-        <li>ONE</li>
-        <li>TWO</li>
-        <li>THREE</li>
+        <li>A pair of sunglasses; it's pretty sunny out.</li>
+        <li>An umbrella; there's a slight chance of rain.</li>
+        <li>Visiting the local bar 4 blocks away; it's trending right now.</li>
       </ul>
-      <p id="v2-0-note">Future Development Note: v.2.0 to include: Actual places to visit based on proximity</p>
+      <p id="v2-0-note">Future Development Notes: 
+        <br>v.2.0 to include actual places to visit based on proximity
+        <br>v.2.0 to make suggestions based on the values of the temperature parameter
+      </p>
     </div>
     <div class="modal-footer">
       <a href="#!" class="modal-close waves-effect waves-green btn-flat">Close</a>
     </div>
   </div>
-
-  <!-- END: MODAL 1 -->
+  <!-- END: MODAL 1: DAYTRIPPER RECOMMENDATIONS -->
 
   <!-- START: FOOTER -->
   <footer class="page-footer blue-footer">
@@ -234,7 +243,7 @@
     </div>
     <div class="footer-copyright">
       <div class="container">
-        © Copyright 2021 — Group 3 |  Project 1
+        © Copyright 2021 — The Wandering Earls
       </div>
     </div>
   </footer>
