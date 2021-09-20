@@ -65,12 +65,12 @@ function initWeather() {
 
   // 1. Define an API Query URL
   // 2. Do a fetch call to retrieve the data
-  fetch('http://api.openweathermap.org/data/2.5/weather?q=' + inputValue.value + '&units=imperial&524901&appid=95d25656c865f0b0125b6ad3ef11eab0')
+  fetch('https://api.openweathermap.org/data/2.5/weather?q=' + inputValue.value + '&units=imperial&524901&appid=95d25656c865f0b0125b6ad3ef11eab0')
 
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          console.log("http://api.openweathermap.org/data/2.5/weather?q=" + inputValue.value + "&units=imperial&524901&appid=95d25656c865f0b0125b6ad3ef11eab0");
+          console.log("https://api.openweathermap.org/data/2.5/weather?q=" + inputValue.value + "&units=imperial&524901&appid=95d25656c865f0b0125b6ad3ef11eab0");
           // DEFINE THE VARIABLES TO EXTRACT FROM API
           var cityName = data['name'];
           var tempValue = data['main']['temp'];
