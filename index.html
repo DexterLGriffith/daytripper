@@ -6,9 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
   <!-- Adding this next line to prevent "MIXED CONTENT" error in github -->
   <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests">
-  <title> Day Tripper | Project 1 | Group 3</title>
 
-  
+  <!-- TITLE OF APP -->
+  <title> DayTripper</title>
+  <!-- FAVICON -->
+  <link rel="apple-touch-icon" sizes="180x180" href="./assets/favicon/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/favicon/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="./assets/favicon/favicon-16x16.png">
+
   <!-- MATERIALIZE CSS -->
   <link href="./assets/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection" />
   <!-- GOOGLE MATERIALIZE ICONS  -->
@@ -139,7 +144,7 @@
               <input id="city-search" placeholder="Search Cities" type="text" class="validate city-search">
               <label for="city-search"></label>
               
-              <a id="search-btn" class="search-btn waves-effect waves-light btn">Search</a>
+              <a id="search-btn" class="search-btn waves-effect waves-light btn" type="submit">Search</a>
               <a id="clear-btn" class="clear-btn waves-effect waves-light btn">Clear</a>
             </div>
           </div>
@@ -257,7 +262,11 @@
   <script src="./assets/js/materialize.js"></script>
   <script src="./assets/js/script.js"></script>
   <!-- This script is what makes the google maps API work -->
-  <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmtQ1hzQJFdnivcj0RLybUddmhldyarz8&callback=initMap&libraries=places"></script>
+  <!-- <script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmtQ1hzQJFdnivcj0RLybUddmhldyarz8&callback=initMap&libraries=places"></script> -->
+  <!-- This script makes both the google maps API visible as well as the AutoComplete -->
+  <script async
+    src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDmtQ1hzQJFdnivcj0RLybUddmhldyarz8&libraries=places&callback=initMap">
+</script>
 
 </body>
 
