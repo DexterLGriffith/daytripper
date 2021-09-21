@@ -58,6 +58,34 @@ function initMap() {
   // 4. Error handling 
 }
 
+// Define variable for autocomplete usage
+let autoComplete;
+
+// Create a function that populates a auto-complete functionality
+function initAutocomplete() {
+    autoComplete = new google.maps.places.Autocomplete(document.getElementById('city-search'), {
+        types: ['geocode'],
+        componentRestrictions: {
+            'country': ['us']
+        },
+        fields: ['place_id', 'geometry', 'name']
+    });
+    autoComplete.addListener('place_changed', onPlaceChanged);
+};
+
+// TODO: The expectation of this function is to move the map to the city the user enters, but so far it doesn't work
+function onPlaceChanged() {
+  var place = autocomplete.getPlace();
+  if (!place.geometry) {
+      console.log("Checking to see if onplaceChanged() is working.");
+      document.getElementById('city-search').placeholder = "Where To?";
+  } else {
+    console.log("onPlaceChanged not working.")
+    return;
+  }
+};
+
+
 // function to get openweatherAPI working for select city
 
 function initWeather() {
@@ -121,11 +149,14 @@ function initWeather() {
     });
 };
 
+
+
 // Add eventlistener attached to search bar to make search bar fetch for the city
 $("#search-btn").on("click", function () {
   var searchTerm = $("#input").val();
   initMap();
   initWeather();
+  initAutocomplete();
   // Make clear button visible
   $("#clear-btn").show();
   // Show the child elements of #results-row
@@ -156,10 +187,10 @@ $(document).ready(function () {
 
 //  start of moment function to get today's current date
 
-// function of what you should pack //
+// function of what you should pack 
 
-// if loop for different weather conditions (rain, sun, snow, etc.) for select zipcode //
+// if loop for different weather conditions (rain, sun, snow, etc.) for select zipcode 
 
-// function of different places to go see using the googlemaps or openstreepmaps apis for given zipcode //
+// function of different places to go see using the googlemaps or openstreepmaps apis for given zipcode 
 
-// yelp review api with review stars for places //
+// yelp review api with review stars for places

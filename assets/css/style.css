@@ -114,6 +114,14 @@ body {
   background-color: #c62828;
   display:inline-block;
 }
+/* TODO: ALLEN'S GOOGLE INPUT */
+#city-search {
+  /* This is the search input field */
+}
+
+input[type="submit"] {
+  /* This is the search button */
+}
 
 /* --------------------------
 9. FOOTER
