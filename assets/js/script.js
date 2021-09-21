@@ -26,6 +26,15 @@ $("#clear-btn").hide();
 // HIDE ERROR SECTION UNTIL WE'RE READY TO USE IT
 $("#error-section").hide();
 
+// HIDE CITY HISTORICAL DATA UNTIL WE'RE READY TO USE IT
+$("#city-history-container").hide();
+
+// HIDE THE TODO LIST CONTAINER UNTIL WE'RE READY TO USE IT
+$("#todo-container").hide();
+
+// HIDE CLEAR ACTIVITIES BUTTON UNTILE WE'RE READY TO USE IT
+$("#clear-btn-2").hide();
+
 // function variables
 // DEFINE HTML ELEMENTS AS VARIABLES
 var inputValue = document.querySelector('.city-search');
@@ -87,7 +96,6 @@ function onPlaceChanged() {
 
 
 // function to get openweatherAPI working for select city
-
 function initWeather() {
   console.log("initWeather has been initialized");
 
@@ -120,6 +128,12 @@ function initWeather() {
 
           // HIDE ERROR SECTION UNTIL WE'RE READY TO USE IT
           $("#error-section").hide();
+
+          // SHOW CITY HISTORICAL DATA CONTAINER
+          $("#city-history-container").show();
+
+          // SHOW THE TODO LIST CONTAINER 
+          $("#todo-container").show();
         });
       }
       // ERROR HANDLING IN CASE THERE'S A NUMBERED ERROR LIKE 404
@@ -149,6 +163,71 @@ function initWeather() {
     });
 };
 
+/* 
+  ================================================
+  TODO:
+  ================================================
+  This section is still a work in progress. Currently, it will save the activities to local storage, but it doesn't remain on the page after refresh/page load
+
+*/
+// Define variables to associate with our HTML elements
+var activity1 = document.querySelector('#activity-1');
+var activity2 = document.querySelector('#activity-2');
+var activity3 = document.querySelector('#activity-3');
+var activity4 = document.querySelector('#activity-4');
+
+// Create an empty array to collect activity data
+var $activityKeeper = [];
+
+// Create event listener to store TODO list values
+$("#save-btn").on("click", function (event) {
+  
+  event.preventDefault();
+  //TODO: Figure out why the activities aren't remaining on the page after clicking "Save Plans"
+
+  // Make clear button visible
+  $("#clear-btn-2").show();
+
+  // =========== ACTIVITY 1
+  var $activity1 = $(activity1).val();
+  $("#activity-1").val(localStorage.getItem($activity1));
+  localStorage.setItem("$activity1", $activity1);
+  $activityKeeper.push($activity1);
+
+  // =========== ACTIVITY 2
+  var $activity2 = $(activity2).val();
+  $("#activity-2").val(localStorage.getItem($activity2));
+  localStorage.setItem("$activity2", $activity2);
+  $activityKeeper.push($activity2);
+
+  // =========== ACTIVITY 3
+  var $activity3 = $(activity3).val();
+  $("#activity-3").val(localStorage.getItem($activity3));
+  localStorage.setItem("$activity3", $activity3);
+  $activityKeeper.push($activity3);
+
+  // =========== ACTIVITY 4
+  var $activity4 = $(activity4).val();
+  $("#activity-4").val(localStorage.getItem($activity4));
+  localStorage.setItem("$activity4", $activity4);
+  $activityKeeper.push($activity4);
+
+  // =========== POTENTIALLY SHOW A FUNCTION THAT WILL DISPLAY PREVIOUSLY SAVED ACTIVITIES
+  showHistoricalActivities();
+
+});
+
+// Add an eventlistener to the clear activities button
+$("#clear-btn-2").on("click", function () {
+ // Make clear button disappear
+ $("#clear-btn-2").hide();
+});
+
+
+function showHistoricalActivities(){
+  // TODO: Maybe this area can fire off on page load, and if there is anythihng stored locally, it will display in the input fields
+  console.log("Activities have been stored.");
+}
 
 
 // Add eventlistener attached to search bar to make search bar fetch for the city
@@ -165,7 +244,7 @@ $("#search-btn").on("click", function () {
   $("#recommendation-container").show();
 });
 
-// Add an eventlistener to the clear button
+// Add an eventlistener to the clear search city button
 $("#clear-btn").on("click", function () {
   // Hide the clear button
   $("#clear-btn").hide();
@@ -175,22 +254,15 @@ $("#clear-btn").on("click", function () {
   $("#results-row").hide();
   // Hide the Recommendation Container
   $("#recommendation-container").hide();
+  // Hide the error section
   $("#error-section").hide();
+  // HIDE CITY HISTORICAL DATA UNTIL WE'RE READY TO USE IT
+  $("#city-history-container").hide();
+  // HIDE THE TODO LIST CONTAINER UNTIL WE'RE READY TO USE IT
+  $("#todo-container").hide();
 });
 
 // THIS FUNCTION FIRES UP THE MODAL:
 $(document).ready(function () {
   $('.modal').modal();
 });
-
-// TODO: Remaining logic to consider:
-
-//  start of moment function to get today's current date
-
-// function of what you should pack 
-
-// if loop for different weather conditions (rain, sun, snow, etc.) for select zipcode 
-
-// function of different places to go see using the googlemaps or openstreepmaps apis for given zipcode 
-
-// yelp review api with review stars for places

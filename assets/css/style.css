@@ -14,7 +14,9 @@ TABLE OF CONTENTS:
 11. RESULTS
 12. PLAN YOUR DAY SECTION
 13. ERROR
-14. OTHER
+14. TODO LIST
+15. CITY SEARCH HISTORY
+16. OTHER
 -- 
 */
 
@@ -197,5 +199,20 @@ input[type="submit"] {
 }
 
 /* --------------------------
-14. OTHER
+14. TODO LIST
+-------------------------- */ 
+#todo-container {
+  background-color: #f2f3ff;
+  width:100% !important;
+  padding: 20px;
+}
+
+/* --------------------------
+15. CITY SEARCH HISTORY
+-------------------------- */ 
+.city-search-title {
+  color:darkgrey;
+}
+/* --------------------------
+16. OTHER
 -------------------------- */ 
