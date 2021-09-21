@@ -168,6 +168,7 @@
               <a id="search-btn" class="search-btn waves-effect waves-light btn" type="submit">Search</a>
               <a id="clear-btn" class="clear-btn waves-effect waves-light btn">Clear</a>
               <br><br>
+
               <!-- TODO: Replace this city place holder with previously searched City Names -->
               <!-- START: CITY SEARCH HISTORY -->
               <div id="city-history-container">
@@ -178,6 +179,7 @@
                 </div>
               </div>
               <!-- END: CITY SEARCH HISTORY -->
+              
             </div>
           </div>
         </div>
@@ -296,8 +298,28 @@
           </form>
         </div>
         <!-- END MAIN COLUMN -->
+
+        <!-- START: ALERT INFO -->
+        <div class="row alert-container">
+          <div class="col s12 m12 alert">
+            <!-- THIS MESSAGE IS DYNAMICALLY CREATED IN SCRIPT.JS -->
+          </div>
+        </div>
+        <!-- END: ALERT INFO -->
+        
       </div>
       <!-- END: MAIN ROW -->
+
+      <!-- START: SHOW ACTIVITY LIST -->
+      <div id="show-activity-results" class="row">
+        <div class="col s12 m12">
+          <h4 id="activity-list-header" class="center">You're All Set! Here's your plan for the day:</h4>
+          <!-- ACTIVITIES WILL BE DYNAMICALLY CONCATENATED FROM SCRIPT.JS -->
+          <ol id="activity-list"></ol>
+        </div>
+      </div>
+      <!-- END: SHOW ACTIVITY LIST -->
+
     </div>
     <br><br>
   </div>

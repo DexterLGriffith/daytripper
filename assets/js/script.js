@@ -35,6 +35,9 @@ $("#todo-container").hide();
 // HIDE CLEAR ACTIVITIES BUTTON UNTILE WE'RE READY TO USE IT
 $("#clear-btn-2").hide();
 
+// Hide activity success header
+$("#activity-list-header").hide();
+
 // function variables
 // DEFINE HTML ELEMENTS AS VARIABLES
 var inputValue = document.querySelector('.city-search');
@@ -47,10 +50,10 @@ var humidityEl = document.querySelector('#humidity');
 var recommendationEl = document.querySelector('#recommendation-container');
 var errorMessageEl = document.querySelector('#error-message');
 var errorSectionEl = document.querySelector('#error-section');
+const alertBox = document.querySelector(".alert"); // select alert display div
 
 // Create the function that grabs the google maps data
 function initMap() {
-  console.log("Google Maps has been initialized");
   var googleMapkey = "AIzaSyDmtQ1hzQJFdnivcj0RLybUddmhldyarz8";
   var mapqueryURL = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDmtQ1hzQJFdnivcj0RLybUddmhldyarz8&callback=initMap"
 
@@ -72,28 +75,27 @@ let autoComplete;
 
 // Create a function that populates a auto-complete functionality
 function initAutocomplete() {
-    autoComplete = new google.maps.places.Autocomplete(document.getElementById('city-search'), {
-        types: ['geocode'],
-        componentRestrictions: {
-            'country': ['us']
-        },
-        fields: ['place_id', 'geometry', 'name']
-    });
-    autoComplete.addListener('place_changed', onPlaceChanged);
+  autoComplete = new google.maps.places.Autocomplete(document.getElementById('city-search'), {
+    types: ['geocode'],
+    componentRestrictions: {
+      'country': ['us']
+    },
+    fields: ['place_id', 'geometry', 'name']
+  });
+  autoComplete.addListener('place_changed', onPlaceChanged);
 };
 
 // TODO: The expectation of this function is to move the map to the city the user enters, but so far it doesn't work
 function onPlaceChanged() {
   var place = autocomplete.getPlace();
   if (!place.geometry) {
-      console.log("Checking to see if onplaceChanged() is working.");
-      document.getElementById('city-search').placeholder = "Where To?";
+    console.log("Checking to see if onplaceChanged() is working.");
+    document.getElementById('city-search').placeholder = "Where To?";
   } else {
     console.log("onPlaceChanged not working.")
     return;
   }
 };
-
 
 // function to get openweatherAPI working for select city
 function initWeather() {
@@ -134,101 +136,117 @@ function initWeather() {
 
           // SHOW THE TODO LIST CONTAINER 
           $("#todo-container").show();
+
         });
       }
       // ERROR HANDLING IN CASE THERE'S A NUMBERED ERROR LIKE 404
       else {
         // TODO: replace alert and create a modal that displays erros
-      // SHOW AN ERROR SECTION INSTEAD OF RESULTS
-      $("#error-section").show();
-      // TODO: Figure out why this isn't working:
-      $('#error-message').innerHTML = "Sorry, " + response.statusText;
-      // Hide the child elements of #results-row
-  $("#results-row").hide();
-  // Hide the Recommendation Container
-  $("#recommendation-container").hide();
+        // SHOW AN ERROR SECTION INSTEAD OF RESULTS
+        $("#error-section").show();
+        // TODO: Figure out why this isn't working:
+        $('#error-message').innerHTML = "Sorry, " + response.statusText;
+        // Hide the child elements of #results-row
+        $("#results-row").hide();
+        // Hide the Recommendation Container
+        $("#recommendation-container").hide();
       }
     })
     // Error handling if the error is anything other than the numbered responses
-    .catch(function (error) {      
+    .catch(function (error) {
       // SHOW AN ERROR SECTION INSTEAD OF RESULTS
       $("#error-section").show();
       // TODO: Figure out why this isn't working:
       errorMessageEl.innerHTML = "Unable to locate city.";
       // errorSectionEl.innerHTML = "<p>Unable to locate city</p>";
       // Hide the child elements of #results-row
-  $("#results-row").hide();
-  // Hide the Recommendation Container
-  $("#recommendation-container").hide();
+      $("#results-row").hide();
+      // Hide the Recommendation Container
+      $("#recommendation-container").hide();
     });
 };
 
 /* 
-  ================================================
-  TODO:
-  ================================================
-  This section is still a work in progress. Currently, it will save the activities to local storage, but it doesn't remain on the page after refresh/page load
-
+  =====================================================
+  SAVING "ACTIVITY" FORM DATA
+  =====================================================
 */
-// Define variables to associate with our HTML elements
+
+// DEFINE VARIABLES OF ACTIVITY HTML ELEMENTS
+var todoFormEl = document.querySelector('#todo-form');
+var saveButtonEl = document.querySelector("#save-btn");
+var activityListEl = document.querySelector('#activity-list');
 var activity1 = document.querySelector('#activity-1');
 var activity2 = document.querySelector('#activity-2');
 var activity3 = document.querySelector('#activity-3');
 var activity4 = document.querySelector('#activity-4');
 
-// Create an empty array to collect activity data
-var $activityKeeper = [];
-
-// Create event listener to store TODO list values
+// ADD EVENT LISTENER TO SAVE PLANS BUTTON
 $("#save-btn").on("click", function (event) {
-  
+  // Don't submit the form
   event.preventDefault();
-  //TODO: Figure out why the activities aren't remaining on the page after clicking "Save Plans"
 
-  // Make clear button visible
+  // Ignore field if all activities are empty otherwise...
+  if (activity1.value.length < 1 && activity2.value.length < 1 && activity3.value.length < 1 && activity4.value.length < 1) return;
+
+  // Add item to activity list
+  activityListEl.innerHTML += '<li>' + activity1.value + '</li>' + '<li>' + activity2.value + '</li>' + '<li>' + activity3.value + '</li>' + '<li>' + activity4.value + '</li>';
+
+  // Store activities locally
+  localStorage.setItem('Activities', activityListEl.innerHTML);
+
+  // Display clear activities button
   $("#clear-btn-2").show();
+  // Show activity success header
+  $("#activity-list-header").show();
 
-  // =========== ACTIVITY 1
-  var $activity1 = $(activity1).val();
-  $("#activity-1").val(localStorage.getItem($activity1));
-  localStorage.setItem("$activity1", $activity1);
-  $activityKeeper.push($activity1);
-
-  // =========== ACTIVITY 2
-  var $activity2 = $(activity2).val();
-  $("#activity-2").val(localStorage.getItem($activity2));
-  localStorage.setItem("$activity2", $activity2);
-  $activityKeeper.push($activity2);
-
-  // =========== ACTIVITY 3
-  var $activity3 = $(activity3).val();
-  $("#activity-3").val(localStorage.getItem($activity3));
-  localStorage.setItem("$activity3", $activity3);
-  $activityKeeper.push($activity3);
-
-  // =========== ACTIVITY 4
-  var $activity4 = $(activity4).val();
-  $("#activity-4").val(localStorage.getItem($activity4));
-  localStorage.setItem("$activity4", $activity4);
-  $activityKeeper.push($activity4);
-
-  // =========== POTENTIALLY SHOW A FUNCTION THAT WILL DISPLAY PREVIOUSLY SAVED ACTIVITIES
-  showHistoricalActivities();
+  // DISPLAY BRIEF ALERTBOX MESSAGE
+  const message = "Your activity has been added!";
+  displayAlert(message);
 
 });
 
-// Add an eventlistener to the clear activities button
-$("#clear-btn-2").on("click", function () {
- // Make clear button disappear
- $("#clear-btn-2").hide();
-});
+// DISPLAY BRIEF ALERTBOX MESSAGE FOR 2 SECONDS
+const displayAlert = message => {
+  alertBox.innerText = message; // add the message into the alert box
+  alertBox.style.display = "block"; // make the alert box visible
+  setTimeout(function () {
+    alertBox.style.display = "none"; // hide the alert box after 1 second
+  }, 2000);
+};
 
+// VIEW PREVIOUSLY SAVED ACTIVITIES
+function viewSavedActivities() {
+  // Check for saved activities
+  var savedActivities = localStorage.getItem('Activities');
 
-function showHistoricalActivities(){
-  // TODO: Maybe this area can fire off on page load, and if there is anythihng stored locally, it will display in the input fields
-  console.log("Activities have been stored.");
+  // If there are any saved activities, update our list
+  if (savedActivities) {
+    // Show activity list
+    activityListEl.innerHTML = savedActivities;
+    // Display clear activities button
+    $("#clear-btn-2").show();
+
+    // Show activity success header
+    $("#activity-list-header").show();
+
+  }
+
 }
 
+// Clear saved activities
+$("#clear-btn-2").on("click", function () {
+  // Hide clear activities button
+  $("#clear-btn-2").hide();
+  // TODO: Why isn't this working?
+  activityListEl.innerHTML = "";
+  localStorage.clear();
+  // Show activity success header
+  $("#activity-list-header").hide();
+  // Clear all form data
+  document.getElementById("todo-form").reset();
+
+});
 
 // Add eventlistener attached to search bar to make search bar fetch for the city
 $("#search-btn").on("click", function () {
@@ -242,6 +260,15 @@ $("#search-btn").on("click", function () {
   $("#results-row").show();
   // Show the Recommendation Container
   $("#recommendation-container").show();
+  if (savedActivities) {
+    // Show activity list
+    activityListEl.innerHTML = savedActivities;
+    // Display clear activities button
+    $("#clear-btn-2").show();
+    // Show activity success header
+    $("#activity-list-header").show();
+
+  }
 });
 
 // Add an eventlistener to the clear search city button
@@ -266,3 +293,6 @@ $("#clear-btn").on("click", function () {
 $(document).ready(function () {
   $('.modal').modal();
 });
+
+// CALL FUNCTION TO DISPLAY PREVIOUSLY SAVED ACTIVITIES
+viewSavedActivities();
