@@ -10,7 +10,7 @@
 // Be responsive. -- (CHECK)
 // Have a polished UI. -- (CHECK)
 // Have a clean repository that meets quality coding standards (file structure, naming conventions, follows best practices for class/id naming conventions, indentation, quality comments, etc.). -- (CHECK)
-// Have a quality README (with unique name, description, technologies used, screenshot, and link to deployed application).
+// Have a quality README (with unique name, description, technologies used, screenshot, and link to deployed application). -- (CHECK)
 // =========================================================
 
 // THIS IS THE FUNCTION TO MAKE THE SIDEBAR COLLAPSABLE
@@ -38,7 +38,6 @@ $("#clear-btn-2").hide();
 // Hide activity success header
 $("#activity-list-header").hide();
 
-// function variables
 // DEFINE HTML ELEMENTS AS VARIABLES
 var inputValue = document.querySelector('.city-search');
 var cityNameEl = document.querySelector('#city-name');
@@ -54,6 +53,8 @@ const alertBox = document.querySelector(".alert"); // select alert display div
 
 // Create the function that grabs the google maps data
 function initMap() {
+  // We're not actually utilizing these variables currently
+  // The API URL is being called asynchronously from our index.html (around line 400)
   var googleMapkey = "AIzaSyDmtQ1hzQJFdnivcj0RLybUddmhldyarz8";
   var mapqueryURL = "https://maps.googleapis.com/maps/api/js?key=AIzaSyDmtQ1hzQJFdnivcj0RLybUddmhldyarz8&callback=initMap"
 
@@ -64,16 +65,12 @@ function initMap() {
     },
     zoom: 5,
   });
-  // 1. Define an API Query URL
-  // 2. Do a fetch call to retrieve the data
-  // 3. Make a promise (then)
-  // 4. Error handling 
 }
 
 // Define variable for autocomplete usage
 let autoComplete;
 
-// Create a function that populates a auto-complete functionality
+// Create a function that populates an auto-complete functionality
 function initAutocomplete() {
   autoComplete = new google.maps.places.Autocomplete(document.getElementById('city-search'), {
     types: ['geocode'],
@@ -191,6 +188,9 @@ var activity2 = document.querySelector('#activity-2');
 var activity3 = document.querySelector('#activity-3');
 var activity4 = document.querySelector('#activity-4');
 
+// Check for saved activities
+var savedActivities = localStorage.getItem('Activities');
+
 // ADD EVENT LISTENER TO SAVE PLANS BUTTON
 $("#save-btn").on("click", function (event) {
   // Don't submit the form
@@ -227,8 +227,7 @@ const displayAlert = message => {
 
 // VIEW PREVIOUSLY SAVED ACTIVITIES
 function viewSavedActivities() {
-  // Check for saved activities
-  var savedActivities = localStorage.getItem('Activities');
+  
 
   // If there are any saved activities, update our list
   if (savedActivities) {
