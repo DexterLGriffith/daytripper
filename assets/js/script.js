@@ -62,7 +62,7 @@ function initMap() {
       lat: 32.7798,
       lng: -96.7623
     },
-    zoom: 10,
+    zoom: 5,
   });
   // 1. Define an API Query URL
   // 2. Do a fetch call to retrieve the data
@@ -80,13 +80,22 @@ function initAutocomplete() {
     componentRestrictions: {
       'country': ['us']
     },
-    fields: ['place_id', 'geometry', 'name']
+    fields: ['geometry', 'name']
   });
-  autoComplete.addListener('place_changed', onPlaceChanged);
+  // This drops a map marker/pin onto the location searched via "place changed action"
+  autoComplete.addListener("place_changed", () => {
+    const place = autoComplete.getPlace();
+    new google.maps.Marker({
+      position: place.geometry.location,
+      title: place.name,
+      map: map
+    })
+  });
 };
 
 // TODO: The expectation of this function is to move the map to the city the user enters, but so far it doesn't work
 function onPlaceChanged() {
+
   var place = autocomplete.getPlace();
   if (!place.geometry) {
     console.log("Checking to see if onplaceChanged() is working.");
@@ -95,6 +104,7 @@ function onPlaceChanged() {
     console.log("onPlaceChanged not working.")
     return;
   }
+  autoComplete.addListener('place_changed', onPlaceChanged);
 };
 
 // function to get openweatherAPI working for select city
@@ -141,7 +151,7 @@ function initWeather() {
       }
       // ERROR HANDLING IN CASE THERE'S A NUMBERED ERROR LIKE 404
       else {
-        // TODO: replace alert and create a modal that displays erros
+        // TODO: replace alert and create a modal that displays errors
         // SHOW AN ERROR SECTION INSTEAD OF RESULTS
         $("#error-section").show();
         // TODO: Figure out why this isn't working:
