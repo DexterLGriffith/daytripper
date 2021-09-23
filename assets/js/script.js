@@ -105,17 +105,17 @@ function onPlaceChanged() {
 };
 
 // function to get openweatherAPI working for select city
-function initWeather() {
+function initWeather(cityKey) {
   console.log("initWeather has been initialized");
 
   // 1. Define an API Query URL
   // 2. Do a fetch call to retrieve the data
-  fetch('https://api.openweathermap.org/data/2.5/weather?q=' + inputValue.value + '&units=imperial&524901&appid=95d25656c865f0b0125b6ad3ef11eab0')
+  fetch('https://api.openweathermap.org/data/2.5/weather?q=' + cityKey + '&units=imperial&524901&appid=95d25656c865f0b0125b6ad3ef11eab0')
 
     .then(function (response) {
       if (response.ok) {
         response.json().then(function (data) {
-          console.log("https://api.openweathermap.org/data/2.5/weather?q=" + inputValue.value + "&units=imperial&524901&appid=95d25656c865f0b0125b6ad3ef11eab0");
+          console.log("https://api.openweathermap.org/data/2.5/weather?q=" + cityKey + "&units=imperial&524901&appid=95d25656c865f0b0125b6ad3ef11eab0");
           // DEFINE THE VARIABLES TO EXTRACT FROM API
           var cityName = data['name'];
           var tempValue = data['main']['temp'];
@@ -227,7 +227,7 @@ const displayAlert = message => {
 
 // VIEW PREVIOUSLY SAVED ACTIVITIES
 function viewSavedActivities() {
-  
+
 
   // If there are any saved activities, update our list
   if (savedActivities) {
@@ -257,18 +257,33 @@ $("#clear-btn-2").on("click", function () {
 
 });
 
+
 // Add eventlistener attached to search bar to make search bar fetch for the city
-$("#search-btn").on("click", function () {
-  var searchTerm = $("#input").val();
+$("#search-btn").on("click", function (event) {
+  event.preventDefault();
+  // Step 1: Define the city search input field as a variable
+  var citySearchValue = $("#city-search").val();
+
   initMap();
-  initWeather();
+  initWeather(citySearchValue);
   initAutocomplete();
+
   // Make clear button visible
   $("#clear-btn").show();
+
   // Show the child elements of #results-row
   $("#results-row").show();
+
   // Show the Recommendation Container
   $("#recommendation-container").show();
+
+  // Step 2: Store our city input value
+  localStorage.setItem(citySearchValue, citySearchValue);
+
+  // Step 3: Create the original chip for items that aren't already stored
+
+  $("#chip-parent").append('<div id="' + citySearchValue + '" class="chip"><a>' + citySearchValue + '<i class="close material-icons">close</i></a></div>');
+
   if (savedActivities) {
     // Show activity list
     activityListEl.innerHTML = savedActivities;
@@ -277,7 +292,9 @@ $("#search-btn").on("click", function () {
     // Show activity success header
     $("#activity-list-header").show();
 
+
   }
+
 });
 
 // Add an eventlistener to the clear search city button
@@ -298,10 +315,47 @@ $("#clear-btn").on("click", function () {
   $("#todo-container").hide();
 });
 
+
 // THIS FUNCTION FIRES UP THE MODAL:
 $(document).ready(function () {
+  
   $('.modal').modal();
+
+  // TODO: THIS IS WHAT POPULATES OUR CHIPS THAT HAVE ALREADY BEEN STORED
+  // Step 3: Get our previously stored city values by running through a for loop to check index placements    
+  var localStorageKeys = Object.keys(localStorage);
+  console.log(localStorageKeys);
+  // Step 4: Run a loop that checks the index placement, extract those values, and place them into HTML elements
+  for (var i = 0; i < localStorageKeys.length; i++) {
+    console.log(localStorageKeys[i]);
+
+    // Create a variable that creates innerHTML elements, by GETTING the item
+    var getLocalStorageValue = localStorage.getItem(localStorageKeys[i]);
+
+    // Create innerHTML structure 
+    
+      $("#chip-parent").append('<div id="' + getLocalStorageValue + '" class="chip"><a>' + getLocalStorageValue + '<i class="close material-icons">close</i></a></div>');
+    
+
+  };
+
+
+  // Create click functionality to the chip
+  $(".chip").on("click", function (event) {
+    event.preventDefault();
+    // Call our weather function because this contains all of our fetch info
+    console.log("I have been clicked BEFORE initWeather()");
+    initWeather($(this).attr('id'));
+    console.log("I have been clicked AFTER initWeather()");
+
+    // This is the test to see if the click function is working
+    console.log($(this).attr('id'));
+    
+
+  });
 });
+
+
 
 // CALL FUNCTION TO DISPLAY PREVIOUSLY SAVED ACTIVITIES
 viewSavedActivities();
