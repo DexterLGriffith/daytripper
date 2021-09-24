@@ -25,6 +25,7 @@ TABLE OF CONTENTS:
 -------------------------- */ 
 body {
   font-family: 'Open Sans', sans-serif;
+  
 }
 
 /* --------------------------
@@ -90,6 +91,7 @@ body {
   background-color: #f2f3ff;
   width:100% !important;
 }
+
 /* --------------------------
 7. ICONS
 -------------------------- */ 
@@ -214,12 +216,5 @@ input[type="submit"] {
   color:darkgrey;
 }
 /* --------------------------
-16. CHIPS
--------------------------- */ 
-.chip {
-  cursor: pointer;
-}
-
-/* --------------------------
-17. OTHER
+16. OTHER
 -------------------------- */ 
